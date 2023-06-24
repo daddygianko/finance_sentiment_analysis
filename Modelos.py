@@ -13,6 +13,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import requests
 
 
 def tokenizar(data, max_length=80):
@@ -146,6 +147,29 @@ def cargar_modelo_json(ruta:str):
         loaded_model_json = json_file.read()
     loaded_model = model_from_json(loaded_model_json, {'TFRobertaModel': TFRobertaModel})
     return loaded_model
+
+models_id={'pesos_Model_RoBERTa_LSTM_no_da':'1-RcHDQrGbthuXIcegLJC_Jws3tetrffH',
+           'pesos_Model_RoBERTa_BiLSTM_no_da':'1-VAu3BCAO_FX7_ohK4e-nQuAvsv-hpIG',
+           'pesos_Model_RoBERTa_GRU_no_da':'1-eJOQv9FiUOeQnZztV0m01LZKS1dayEm',
+           'pesos_Model_RoBERTa_LSTM_eda':'1etsDyZ19i0hAEGjVEPEU7ql_3Il72nJQ',
+           'pesos_Model_RoBERTa_BiLSTM_eda':'1yt8VQ50VcDjbyCoy-H8Sut73A31xVNFf',
+           'pesos_Model_RoBERTa_GRU_eda':'1tf3tTG4JGxHlfmUqJMRodiI1K1pBK90r',
+           'pesos_Model_RoBERTa_LSTM_nlpaug':'1-J2pnrdsSyhsVhCun2Th02RBOEDS6W1u',
+           'pesos_Model_RoBERTa_BiLSTM_nlpaug':'1-MjNMWEio-GY5F8VE2fr6xJYMqHp2msU',
+           'pesos_Model_RoBERTa_GRU_nlpaug':'1wZt36idELjmdxg-PY2ikJRXrjrfEzZMm'}
+
+def __download_models_from_drive(url, save_path):
+    response = requests.get(url)
+    with open(save_path, 'wb') as file:
+        file.write(response.content)
+
+
+def descargar_modelos(save_path, model):
+    ruta_guardado=save_path+model+'.h5'
+    url='https://drive.google.com/uc?id='+models_id[model]
+    if not os.path.exists(ruta_guardado):
+        __download_models_from_drive(url, ruta_guardado)
+        
 
 def plot_confusion_matrix(y_true, y_pred, cat_values, cat_names, title:str='Matriz de Confusión'):
     cm = confusion_matrix(y_true, y_pred, labels=cat_values)
