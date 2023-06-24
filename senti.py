@@ -21,11 +21,12 @@ def Main():
     
     pred_class = {0:'Negative', 1:'Neutral', 2:'Positive'}
     
-    print(f'\nCARGANDO MODELOS Y PESOS\n')
+    print(f'\nCARGANDO LOS MODELOS\n')
     modelo_lstm = mo.cargar_modelo_json(path + f'Model_RoBERTa_LSTM_{args.model}_config.json')
     modelo_bilstm = mo.cargar_modelo_json(path + f'Model_RoBERTa_BiLSTM_{args.model}_config.json')
     modelo_gru = mo.cargar_modelo_json(path + f'Model_RoBERTa_GRU_{args.model}_config.json')
     
+    print(f'\nDESCARGANDO LOS PESOS\n')
     mo.descargar_modelos(path,f'pesos_{modelo_lstm.name}')
     mo.descargar_modelos(path,f'pesos_{modelo_bilstm.name}')
     mo.descargar_modelos(path,f'pesos_{modelo_gru.name}')
