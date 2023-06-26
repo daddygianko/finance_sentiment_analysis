@@ -15,25 +15,26 @@ def Main():
     ap.add_argument('-p', '--path', type=str, help='pretrained saved models path. Example: c:\\models\\' )
     args = ap.parse_args()
     
-    path = os.getcwd() + '\\modelos_guardados\\FinancialPhraseBank\\'
+    configs_path = os.getcwd() + '\\modelos_guardados\\FinancialPhraseBank\\'
+    weights_path = os.getcwd() + '\\modelos_guardados\\FinancialPhraseBank\\'
     if args.path:
-        path=args.path
+        weights_path=args.path
     
     pred_class = {0:'Negative', 1:'Neutral', 2:'Positive'}
     
     print(f'\nCARGANDO LOS MODELOS\n')
-    modelo_lstm = mo.cargar_modelo_json(path + f'Model_RoBERTa_LSTM_{args.model}_config.json')
-    modelo_bilstm = mo.cargar_modelo_json(path + f'Model_RoBERTa_BiLSTM_{args.model}_config.json')
-    modelo_gru = mo.cargar_modelo_json(path + f'Model_RoBERTa_GRU_{args.model}_config.json')
+    modelo_lstm = mo.cargar_modelo_json(configs_path + f'Model_RoBERTa_LSTM_{args.model}_config.json')
+    modelo_bilstm = mo.cargar_modelo_json(configs_path + f'Model_RoBERTa_BiLSTM_{args.model}_config.json')
+    modelo_gru = mo.cargar_modelo_json(configs_path + f'Model_RoBERTa_GRU_{args.model}_config.json')
     
     print(f'\nDESCARGANDO LOS PESOS\n')
-    mo.descargar_modelos(path,f'pesos_{modelo_lstm.name}')
-    mo.descargar_modelos(path,f'pesos_{modelo_bilstm.name}')
-    mo.descargar_modelos(path,f'pesos_{modelo_gru.name}')
+    mo.descargar_modelos(weights_path,f'pesos_{modelo_lstm.name}')
+    mo.descargar_modelos(weights_path,f'pesos_{modelo_bilstm.name}')
+    mo.descargar_modelos(weights_path,f'pesos_{modelo_gru.name}')
     
-    modelo_lstm = mo.cargar_pesos(modelo_lstm, path + f'pesos_{modelo_lstm.name}.h5')
-    modelo_bilstm = mo.cargar_pesos(modelo_bilstm, path + f'pesos_{modelo_bilstm.name}.h5')
-    modelo_gru = mo.cargar_pesos(modelo_gru, path + f'pesos_{modelo_gru.name}.h5')
+    modelo_lstm = mo.cargar_pesos(modelo_lstm, weights_path + f'pesos_{modelo_lstm.name}.h5')
+    modelo_bilstm = mo.cargar_pesos(modelo_bilstm, weights_path + f'pesos_{modelo_bilstm.name}.h5')
+    modelo_gru = mo.cargar_pesos(modelo_gru, weights_path + f'pesos_{modelo_gru.name}.h5')
     
     print(f'\nTEXTO ORIGINAL: \n{args.sentence}')
     
