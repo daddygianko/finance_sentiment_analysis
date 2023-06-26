@@ -2,7 +2,17 @@
 
 Finance Sentiment Analysis es nuestro proyecto final de carrera realizado para poder predecir el sentimiento de titulares financieros. 
 
+La predicción se realiza mediante el uso de 5 modelos distintos. Tres modelos híbridos: RoBERTa-LSTM, RoBERTa-BiLSTM y RoBERTa-GRU. Y por 2 modelos ensamblados, por promedio y por votación, donde se ensamblan los tres modelos previamente mencionados. 
+
+Además se utilizaron tres enfoques para entrenar los datos. La primera es entrenar los modelos sin realizar aumento de datos, la segunda realizando aumento de datos usando técnicas EDA, y la tercera realizando aumento de datos utilizando métodos de aumento de la librería NLPAUG.
+
 Se tomó como base el modelo de predicción ensamblado descrito en el paper [Sentiment Analysis With Ensemble Hybrid Deep Learning Model](https://ieeexplore.ieee.org/document/9903622) de los autores Tan, Lee, Lim y Anbananthen.
+
+Para el entrenamiento se utilizó el dataset [Sentiment Analysis for Financial News](https://www.kaggle.com/datasets/ankurzing/sentiment-analysis-for-financial-news) extraído de Kaggle.
+
+Debido al desbalance de clases se optó por 2 métodos de aumento de clases.
+* La primera está basada en las técnicas de aumento de datos denominadas EDA descritas en el paper [EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/pdf/1901.11196v2.pdf) de los autores Wei y Zou.
+* Para la segunda se utilizó la librería [NLPAUG](https://github.com/makcedward/nlpaug/tree/master). Más precisamente, se utilizaron las siguientes técnicas de aumento de datos para oraciones: _Spelling Augmenter_, _Insert word by contextual word embeddings using RoBERTa_, _Substitute word by contextual word embeddings using RoBERTa_ y _Back Translation Augmenter_.
 
 ## Como Usar
 
@@ -12,17 +22,17 @@ Ejemplo:
 python senty.py -s '<insertar oración>'
 ```
 Los parámetros que se pueden pasar a la aplicación son:
-* -s, --sentence. La oración que será analizada. 
+* -s, --sentence. La oración que será analizada. Parámetro obligatorio.
 * -p, --path. Cambia la ruta donde se encuentran/descargarán los pesos de los modelos usados por la creación de los modelos. 
 * -m, --model. Elegir que modelo preentrenado será utilizado. Existen tres posibilidades: 'no_da' para el modelo sin aumento de datos, 'eda' para el modelo que utilizó tecnicas EDA para el aumento de datos, y 'nlpaug' para el modelo entrenado con técnicas de aumento de la librería nlpaug. Por defecto utiliza la opción 'eda.
 La aplicación _senti-py_ descargará los archivos de los pesos de los modelos y los de la librería NLTK si es que estos no se encontraran en la carpeta de trabajo. 
 
-Debido a que los pesos de los modelos pesan casi 500mb cada uno, se pueden descargar de antemano utilizando la aplicación _weights_dl.py_.
+Debido a que los pesos de los modelos tienen un tamaño de casi 500mb cada uno, se pueden descargar de antemano utilizando la aplicación _weights_dl.py_.
 Ejemplo:
 ```bash
 python weights_dl.py
 ```
-Los parámetros que se pueden pasar a la aplicación son:
+Los parámetros opcionales que se pueden pasar a la aplicación son:
 * -p, --path. Cambia la ruta donde se descargarán los pesos de los modelos usados por la creación de los modelos. 
 * -m, --model. Seleccionar 'all' para descargar todos los pesos o seleccionar entre 'no_da', 'eda', 'nlpaug' para descargar solo los pesos elegidos. Valor por defecto 'all'
 
@@ -59,4 +69,3 @@ pip install googletrans-py
 
 ## Agradecimientos
 
-K. L. Tan, C. P. Lee, K. M. Lim and K. S. M. Anbananthen, "Sentiment Analysis With Ensemble Hybrid Deep Learning Model," in IEEE Access, vol. 10, pp. 103694-103704, 2022, doi: 10.1109/ACCESS.2022.3210182.
