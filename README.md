@@ -6,7 +6,7 @@ La predicción se realiza mediante el uso de 5 modelos distintos. Tres modelos h
 
 Además se utilizaron tres enfoques para entrenar los datos. La primera es entrenar los modelos sin realizar aumento de datos, la segunda realizando aumento de datos usando técnicas EDA, y la tercera realizando aumento de datos utilizando métodos de aumento de la librería NLPAUG.
 
-Se tomó como base el modelo de predicción ensamblado descrito en el paper [Sentiment Analysis With Ensemble Hybrid Deep Learning Model](https://ieeexplore.ieee.org/document/9903622) de los autores Tan, Lee, Lim y Anbananthen.
+Se tomaron como base los modelos de predicción ensamblados descritos en el paper [Sentiment Analysis With Ensemble Hybrid Deep Learning Model](https://ieeexplore.ieee.org/document/9903622) de los autores Tan, Lee, Lim y Anbananthen.
 
 Para el entrenamiento se utilizó el dataset [Sentiment Analysis for Financial News](https://www.kaggle.com/datasets/ankurzing/sentiment-analysis-for-financial-news) extraído de Kaggle.
 
