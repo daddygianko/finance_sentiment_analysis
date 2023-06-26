@@ -59,9 +59,9 @@ Si se desea realizar el entrenamiento de los modelos usando el jupyter notebook 
 * nlpaug, torch>=1.6.0, transformers>=4.11.3, sentencepiece, sacremoses, googletrans-py>=4.0.0
 
 Para la instalación del paquete googletrans-py se necesitará usar pip debido a que la versión de conda no es la correcta.
-´´´bash
+```bash
 pip install googletrans-py
-´´´
+```
 
 ## Autores
 * Flores Cuenca, Luis Fernando
