@@ -3,31 +3,34 @@ import Modelos as mo
 import Preprocesamiento as pp
 import numpy as np
 import os
-#import tensorflow as tf
-#from tensorflow.keras import Model
 
 
 def Main():    
-    ap = argparse.ArgumentParser(prog='Sentiment Prediction Program', 
-                                 description='Determines the sentiment of the sentence provided')
-    ap.add_argument('-s', '--sentence', required=True, type=str, help='Enter a sentence to be classified.')
-    ap.add_argument('-m', '--model', type=str, default='eda', help='Select between \"no_da\", \"eda\", or \"nlpaug\" to decide which trained models to use.')
-    ap.add_argument('-p', '--path', type=str, help='pretrained saved models path. Example: c:\\models\\' )
+    ap = argparse.ArgumentParser(prog='Análisis de Sentimientos Financiero', 
+                                 description='Determina el sentimiento (Negativo, Positivo o Neutro) de la oración proporcionada.')
+    ap.add_argument('-s', '--sentence', required=True, type=str, help='La oración que se desea clasificar')
+    ap.add_argument('-m', '--model', type=str, default='eda', choices=['no_da', 'eda', 'nlpaug'],
+                    help='Seleccionar entre \'no_da\', \'eda\', o \'nlpaug\' para decidir que modelo utilizar en la clasificación. Valor por defecto \'eda\'')
+    ap.add_argument('-p', '--path', type=str, 
+                    help='La ruta donde se encuentran/descargarán los pesos de los modelos a utilizar. Ejemplo: \'c:\\models\'' )
     args = ap.parse_args()
     
     configs_path = os.getcwd() + '\\modelos_guardados\\FinancialPhraseBank\\'
     weights_path = os.getcwd() + '\\modelos_guardados\\FinancialPhraseBank\\'
     if args.path:
-        weights_path=args.path
+        weights_path=args.path+'\\'
     
-    pred_class = {0:'Negative', 1:'Neutral', 2:'Positive'}
+    pred_class = {0:'Negativo', 1:'Neutro', 2:'Positivo'}
     
     print(f'\nCARGANDO LOS MODELOS\n')
     modelo_lstm = mo.cargar_modelo_json(configs_path + f'Model_RoBERTa_LSTM_{args.model}_config.json')
     modelo_bilstm = mo.cargar_modelo_json(configs_path + f'Model_RoBERTa_BiLSTM_{args.model}_config.json')
     modelo_gru = mo.cargar_modelo_json(configs_path + f'Model_RoBERTa_GRU_{args.model}_config.json')
     
-    print(f'\nDESCARGANDO LOS PESOS\n')
+    print(f'\nDESCARGANDO LOS PESOS ...\n')
+    if not os.path.exists(weights_path):
+        os.makedirs(weights_path)
+
     mo.descargar_modelos(weights_path,f'pesos_{modelo_lstm.name}')
     mo.descargar_modelos(weights_path,f'pesos_{modelo_bilstm.name}')
     mo.descargar_modelos(weights_path,f'pesos_{modelo_gru.name}')
@@ -57,8 +60,8 @@ def Main():
     print(f'Pred RoBERTa-LSTM: {clase1}')
     print(f'Pred RoBERTa-BiLSTM: {clase2}')
     print(f'Pred RoBERTa-GRU: {clase3}')
-    print(f'Pred Avg Ensemble: {clase4}')
-    print(f'Pred Vote Ensemble: {clase5}')
+    print(f'Pred Ensamblado por Promedio: {clase4}')
+    print(f'Pred Ensamblado por Votación: {clase5}')
 
     print(f'\n############# FIN DEL PROGRAMA #############\n')
     
