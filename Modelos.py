@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import os
 import gdown
 
-
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')  
 def tokenizar(data, max_length=80):
     tokenizer = RobertaTokenizer.from_pretrained('roberta-base')  
     input_ids = []

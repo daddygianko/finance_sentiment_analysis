@@ -66,8 +66,6 @@ pip install googletrans-py
 En la carpeta _environment_ se encuentra el archivo _env_proy_capstone.yaml_ con el cual se puede crear el entorno para el uso del proyecto utilizando conda.
 
 ## Autores
-* Flores Cuenca, Luis Fernando
-* Mello Loayza, Gianfranco Willy
-
-## Agradecimientos
+* Flores Cuenca, Luis Fernando. 
+* Mello Loayza, Gianfranco Willy.
 
