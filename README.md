@@ -44,7 +44,7 @@ Si se ejecuta en Google Colab se deberá agregar la carpeta datasets y los archi
 
 ## Video de Uso
 
-
+[![Video de uso](https://img.youtube.com/vi/oOTr13q1BZs/maxresdefault.jpg)](https://www.youtube.com/watch?v=oOTr13q1BZs)
 
 ## Paquetes Necesarios
 
@@ -56,7 +56,7 @@ Para el uso de la aplicación de clasificación se necesitaran las siguientes de
 
 Si se desea realizar el entrenamiento de los modelos usando el jupyter notebook se necesitarán los paquetes previamente mencionados más las siguientes dependencias:
 
-* nlpaug, torch>=1.6.0, transformers>=4.11.3, sentencepiece, sacremoses, googletrans-py>=4.0.0
+* nlpaug, torch>=1.6.0, transformers>=4.11.3, sentencepiece, sacremoses, googletrans-py>=4.0.0, openpyxl
 
 Para la instalación del paquete googletrans-py se necesitará usar pip debido a que la versión de conda no es la correcta.
 ```bash
