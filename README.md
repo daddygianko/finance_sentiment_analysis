@@ -1,6 +1,6 @@
-# finance_sentiment_analysis
+# Finance Sentiment Analysis
 
-Finance Sentiment Analysis es nuestro proyecto final de carrera realizado para poder predecir el sentimiento de titulares financieros. 
+Finance Sentiment Analysis es nuestro proyecto final de carrera realizado para poder predecir el sentimiento de titulares financieros. El proyecto se encarga de clasificar el titular financiero en tres posibles categorías: Negativo, Neutro o Positivo.
 
 La predicción se realiza mediante el uso de 5 modelos distintos. Tres modelos híbridos: RoBERTa-LSTM, RoBERTa-BiLSTM y RoBERTa-GRU. Y por 2 modelos ensamblados, por promedio y por votación, donde se ensamblan los tres modelos previamente mencionados. 
 
@@ -62,6 +62,8 @@ Para la instalación del paquete googletrans-py se necesitará usar pip debido a
 ```bash
 pip install googletrans-py
 ```
+
+En la carpeta _environment_ se encuentra el archivo _env_proy_capstone.yaml_ con el cual se puede crear el entorno para el uso del proyecto utilizando conda.
 
 ## Autores
 * Flores Cuenca, Luis Fernando
