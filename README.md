@@ -67,7 +67,7 @@ En la carpeta _environment_ se encuentra el archivo _env_proy_capstone.yaml_ con
 
 ## video de Despliegue
 
-[![Video de despliegue](https://img.youtube.com/vi/MV8Xz1q67Ls/maxresdefault.jpg)](https://www.youtube.com/watch?v=MV8Xz1q67Ls)
+[![Video de despliegue](https://img.youtube.com/vi/MV8Xz1q67Ls/hqdefault.jpg)](https://www.youtube.com/watch?v=MV8Xz1q67Ls)
 
 ## Autores
 * Flores Cuenca, Luis Fernando. 
