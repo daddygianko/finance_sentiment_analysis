@@ -44,7 +44,7 @@ Si se ejecuta en Google Colab se deberá agregar la carpeta datasets y los archi
 
 ## Video de Uso
 
-[![Video de uso](https://img.youtube.com/vi/oOTr13q1BZs/maxresdefault.jpg)](https://www.youtube.com/watch?v=oOTr13q1BZs)
+[![Video de uso](https://img.youtube.com/vi/oOTr13q1BZs/hqdefault.jpg)](https://www.youtube.com/watch?v=oOTr13q1BZs)
 
 ## Paquetes Necesarios
 
