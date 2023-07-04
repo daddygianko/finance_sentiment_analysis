@@ -1,11 +1,11 @@
 from transformers import RobertaTokenizer, TFRobertaModel
 import tensorflow as tf
-from tensorflow.keras import Model
-from tensorflow.keras.models import load_model, model_from_json
-from tensorflow.keras.layers import LSTM, Dense, Input, Flatten, Bidirectional, GRU
-from tensorflow.keras.optimizers import Adam, Nadam
-from tensorflow.keras.callbacks import EarlyStopping
-from tensorflow.keras.utils import to_categorical, plot_model
+from keras import Model
+from keras.models import load_model, model_from_json
+from keras.layers import LSTM, Dense, Input, Flatten, Bidirectional, GRU
+from keras.optimizers import Adam, Nadam
+from keras.callbacks import EarlyStopping
+from keras.utils import to_categorical, plot_model
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 from collections import Counter
 import matplotlib.pyplot as plt
